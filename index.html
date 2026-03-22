@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="sayfaBasligi"></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans">
+
+    <script>
+        const Dukkan = {
+            isim: "Örnek Berber Ahmet",
+            slogan: "Sektörde 20 Yıllık Tecrübe",
+            whatsapp: "905550000000", // Başında 90 olmalı, boşluk olmamalı
+            adres: "Atatürk Mah. Karanfil Sok. No:5, Kadıköy",
+            haritaLink: "https://maps.google.com", 
+            hizmetler: [
+                {ad: "Saç Kesimi", fiyat: "250 TL"},
+                {ad: "Sakal Tasarım", fiyat: "150 TL"},
+                {ad: "Çocuk Tıraşı", fiyat: "200 TL"},
+                {ad: "Cilt Bakım Maskesi", fiyat: "100 TL"}
+            ]
+        };
+    </script>
+
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <span id="logo" class="font-black text-xl tracking-tighter text-indigo-700"></span>
+            <a id="waBtnUst" href="#" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-full text-sm font-bold transition-all shadow-lg shadow-green-200">
+                <i class="fa-brands fa-whatsapp mr-1"></i> Randevu Al
+            </a>
+        </div>
+    </nav>
+
+    <header class="py-20 px-6 bg-gradient-to-br from-indigo-700 to-purple-800 text-white text-center">
+        <h1 id="heroIsim" class="text-4xl md:text-6xl font-extrabold mb-4"></h1>
+        <p id="heroSlogan" class="text-lg opacity-90 max-w-xl mx-auto"></p>
+    </header>
+
+    <section class="container mx-auto px-6 -mt-10">
+        <div class="bg-white rounded-3xl shadow-xl p-8 max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-scissors text-indigo-600"></i> Hizmetlerimiz
+            </h2>
+            <div id="liste" class="space-y-4">
+                </div>
+        </div>
+    </section>
+
+    <section class="container mx-auto px-6 py-16 text-center">
+        <div class="max-w-xl mx-auto bg-slate-100 p-8 rounded-3xl border-2 border-dashed border-slate-300">
+            <h3 class="font-bold text-xl mb-4 text-slate-700 underline decoration-indigo-500 underline-offset-4">Bize Ulaşın</h3>
+            <p id="adresMetni" class="text-slate-600 mb-8"></p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a id="haritaBtn" href="#" target="_blank" class="bg-white border-2 border-slate-300 px-8 py-3 rounded-2xl font-bold hover:bg-slate-200 transition-colors">
+                    <i class="fa-solid fa-location-dot text-red-500"></i> Yol Tarifi
+                </a>
+                <a id="waBtnAlt" href="#" target="_blank" class="bg-green-500 text-white px-8 py-3 rounded-2xl font-bold hover:scale-105 transition-transform">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp Yaz
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pb-10 text-center text-slate-400 text-xs">
+        <p>© 2026 <span id="fIsim"></span> | Dijital Esnaf Çözümleri</p>
+    </footer>
+
+    <script>
+        document.getElementById('sayfaBasligi').innerText = Dukkan.isim;
+        document.getElementById('logo').innerText = Dukkan.isim.toUpperCase();
+        document.getElementById('heroIsim').innerText = Dukkan.isim;
+        document.getElementById('heroSlogan').innerText = Dukkan.slogan;
+        document.getElementById('adresMetni').innerText = Dukkan.adres;
+        document.getElementById('fIsim').innerText = Dukkan.isim;
+        document.getElementById('haritaBtn').href = Dukkan.haritaLink;
+
+        const waLink = `https://wa.me/${Dukkan.whatsapp}?text=${encodeURIComponent("Merhaba " + Dukkan.isim + ", bilgi/randevu almak istiyorum.")}`;
+        document.getElementById('waBtnUst').href = waLink;
+        document.getElementById('waBtnAlt').href = waLink;
+
+        const listeBox = document.getElementById('liste');
+        Dukkan.hizmetler.forEach(h => {
+            listeBox.innerHTML += `
+                <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                    <span class="font-medium text-slate-700">${h.ad}</span>
+                    <span class="font-bold text-indigo-600">${h.fiyat}</span>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
